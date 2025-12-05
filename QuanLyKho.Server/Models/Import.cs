@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuanLyKho.API.Models
+namespace QuanLyKho.Server.Models
 {
     public partial class Import : ObservableValidator
     {

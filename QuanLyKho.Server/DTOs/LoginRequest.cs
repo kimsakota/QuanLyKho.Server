@@ -1,4 +1,4 @@
-﻿namespace QuanLyKho.API.DTOs
+﻿namespace QuanLyKho.Server.DTOs
 {
     public class LoginRequest
     {

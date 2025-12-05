@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using QuanLyKho.API.DTOs;
-using QuanLyKho.API.Models; // Namespace chứa AppDbContext và các Model gốc
+using QuanLyKho.Server.DTOs;
+using QuanLyKho.Server.Models; // Namespace chứa AppDbContext và các Model gốc
 
-namespace QuanLyKho.API.Controllers
+namespace QuanLyKho.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

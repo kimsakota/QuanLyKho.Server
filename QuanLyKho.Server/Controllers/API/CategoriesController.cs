@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using QuanLyKho.API.Models; // Thay bằng namespace thực tế của bạn
+using QuanLyKho.Server.Models; // Thay bằng namespace thực tế của bạn
 
 namespace QuanLyKho.Server.Controllers
 {

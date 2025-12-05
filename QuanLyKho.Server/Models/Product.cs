@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
-namespace QuanLyKho.API.Models
+namespace QuanLyKho.Server.Models
 {
     public partial class Product : ObservableValidator
     {

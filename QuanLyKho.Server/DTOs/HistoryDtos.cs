@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QuanLyKho.API.DTOs
+namespace QuanLyKho.Server.DTOs
 {
     // DTO cho danh sách lịch sử (LoadDataAsync)
     public class HistoryItemDto

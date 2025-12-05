@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace QuanLyKho.API.DTOs
+namespace QuanLyKho.Server.DTOs
 {
     public class InventoryCheckDetailDto
     {

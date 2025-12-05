@@ -1,4 +1,4 @@
-﻿namespace QuanLyKho.API.DTOs
+﻿namespace QuanLyKho.Server.DTOs
 {
     // Dữ liệu tổng hợp cho báo cáo tồn kho
     public class InventoryReportResponse

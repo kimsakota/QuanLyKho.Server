@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace QuanLyKho.API.DTOs
+namespace QuanLyKho.Server.DTOs
 {
     /// <summary>
     /// DTO chi tiết từng sản phẩm trong phiếu xuất

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using QuanLyKho.API.DTOs;
-using QuanLyKho.API.Services;
+using QuanLyKho.Server.DTOs;
+using QuanLyKho.Server.Services;
 
 
 namespace QuanLyKho.Server.Controllers

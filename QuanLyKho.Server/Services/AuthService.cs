@@ -1,13 +1,13 @@
 ﻿using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using QuanLyKho.API.DTOs;
-using QuanLyKho.API.Models;
+using QuanLyKho.Server.DTOs;
+using QuanLyKho.Server.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace QuanLyKho.API.Services
+namespace QuanLyKho.Server.Services
 {
     public class AuthService : IAuthService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace QuanLyKho.API.DTOs
+namespace QuanLyKho.Server.DTOs
 {
     // Class nhận dữ liệu từ Client gửi lên
     public class CreateImportRequest

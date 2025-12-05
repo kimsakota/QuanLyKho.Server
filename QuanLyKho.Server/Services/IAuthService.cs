@@ -1,6 +1,6 @@
-﻿using QuanLyKho.API.DTOs;
+﻿using QuanLyKho.Server.DTOs;
 
-namespace QuanLyKho.API.Services
+namespace QuanLyKho.Server.Services
 {
     public interface IAuthService
     {

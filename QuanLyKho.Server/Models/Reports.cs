@@ -1,4 +1,4 @@
-﻿namespace QuanLyKho.API.Models
+﻿namespace QuanLyKho.Server.Models
 {
     public class Reports
     {

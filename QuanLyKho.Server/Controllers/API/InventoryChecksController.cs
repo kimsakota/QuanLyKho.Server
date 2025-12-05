@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using QuanLyKho.API.DTOs; // Sử dụng DTO
-using QuanLyKho.API.Models; // Sử dụng Entity
+using QuanLyKho.Server.DTOs; // Sử dụng DTO
+using QuanLyKho.Server.Models; // Sử dụng Entity
 using System.Security.Claims;
 
-namespace QuanLyKho.API.Controllers
+namespace QuanLyKho.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
