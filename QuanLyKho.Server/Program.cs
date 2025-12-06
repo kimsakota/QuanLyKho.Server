@@ -6,11 +6,13 @@ using QuanLyKho.Server.Models;
 using QuanLyKho.Server.Services;
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Server=localhost\\SQLEXPRESS;Database=QuanLyKhoHang;Trusted_Connection=True;TrustServerCertificate=True";
+    ?? "Server=103.28.36.36;Database=nhkimi2o_quanlykho_db;User Id=nhkimi2o_kimsakota;Password=Cute123_VN@;TrustServerCertificate=True;";
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -41,10 +43,12 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-// ===== C?U H?NH CORS (n?u c?n call API t? frontend khác) =====
+builder.Services.AddControllers()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -107,7 +111,22 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseExceptionHandler("/Home/Error");
+    // Tách biệt xử lý lỗi
+    /*app.UseExceptionHandler(appError =>
+    {
+        appError.Run(async context =>
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync("{\"error\": \"Đã xảy ra lỗi không mong muốn.\"}");
+        });
+    });
+
+    // Trả về View cho lỗi Web thông thường
+    app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), appBuilder =>
+    {
+        appBuilder.UseExceptionHandler("/Home/Error");
+    });*/
 }
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -115,9 +134,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowAll"); // B?t CORS
+app.UseCors("AllowAll"); 
 
-app.UseAuthentication(); // QUAN TR?NG: Ph?i có d?ng này
+app.UseAuthentication(); 
 
 app.UseAuthorization();
 
