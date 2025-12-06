@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+Ôªøusing Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -37,14 +37,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// ===== –√NG K? SERVICES =====
+// ===== ƒêƒÇNG K? SERVICES =====
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 
-// ===== C?U H?NH CORS (n?u c?n call API t? frontend kh·c) =====
+// ===== C?U H?NH CORS (n?u c?n call API t? frontend kh√°c) =====
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -70,11 +70,11 @@ builder.Services.AddSwaggerGen(options =>
     // Add JWT Bearer authentication to Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "Nh?p JWT token (khÙng c?n ghi ch? 'Bearer')",
+        Description = "Nh·∫≠p JWT token (kh√¥ng c√≤n ghi ch·ªØ 'Bearer')",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = "bearer",       // l˝u ?: th˝?ng vi?t lowercase
+        Scheme = "bearer",       // l∆∞u ?: th∆∞?ng vi?t lowercase
         BearerFormat = "JWT"
     });
 
@@ -97,9 +97,7 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath))
-    {
         options.IncludeXmlComments(xmlPath);
-    }
 });
 
 var app = builder.Build();
@@ -119,7 +117,7 @@ app.UseRouting();
 
 app.UseCors("AllowAll"); // B?t CORS
 
-app.UseAuthentication(); // QUAN TR?NG: Ph?i cÛ d?ng n‡y
+app.UseAuthentication(); // QUAN TR?NG: Ph?i c√≥ d?ng n√†y
 
 app.UseAuthorization();
 

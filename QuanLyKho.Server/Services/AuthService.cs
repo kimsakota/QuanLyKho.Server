@@ -28,10 +28,8 @@ namespace QuanLyKho.Server.Services
             if (user == null) 
                 return null;
             if(user.Username != "test")
-            {
                 if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
                     return null;
-            }
 
 
             var token = GenerateJwtToken(user);
