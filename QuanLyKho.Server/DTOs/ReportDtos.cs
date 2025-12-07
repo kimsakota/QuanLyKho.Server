@@ -28,4 +28,21 @@
         public string Label { get; set; } = string.Empty;
         public decimal Value { get; set; }
     }
+
+    public class SupplierReportResponse
+    {
+        public int TotalSuppliers { get; set; }       // Tổng số NCC
+        public int ActiveSuppliers { get; set; }      // Số NCC hoạt động trong kỳ
+        public int TotalImportOrders { get; set; }    // Tổng số phiếu nhập
+        public decimal TotalImportCost { get; set; }  // Tổng chi phí nhập
+        public List<TopSupplierDto> TopSuppliers { get; set; } = new();
+    }
+
+    public class TopSupplierDto
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public int OrderCount { get; set; }           // Số lần nhập
+        public decimal TotalImportValue { get; set; } // Tổng giá trị nhập
+    }
 }

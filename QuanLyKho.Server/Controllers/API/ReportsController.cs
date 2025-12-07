@@ -217,5 +217,75 @@ namespace QuanLyKho.Server.Controllers
 
             return Ok(response);
         }
+
+        // --- 4. BÁO CÁO NHÀ CUNG CẤP (Mới) ---
+        // GET: api/Reports/Suppliers?from=...&to=...
+        [HttpGet("Suppliers")]
+        public async Task<ActionResult<SupplierReportResponse>> GetSupplierReport(DateTime from, DateTime to)
+        {
+            var startDate = from.Date;
+            var endDate = to.Date.AddDays(1).AddTicks(-1);
+
+            // 1. Query cơ bản: Lấy các phiếu nhập trong khoảng thời gian
+            // Chỉ lấy SupplierId và tính tổng tiền luôn để nhẹ dữ liệu
+            var importsInPeriod = _context.Imports
+                .AsNoTracking()
+                .Where(i => i.ImportDate >= startDate && i.ImportDate <= endDate && i.SupplierId != null)
+                .Select(i => new
+                {
+                    i.SupplierId,
+                    // Tổng tiền = Tổng (Số lượng * Đơn giá) của từng chi tiết
+                    TotalValue = i.ImportDetails.Sum(d => d.Quantity * d.UnitPrice)
+                });
+
+            var response = new SupplierReportResponse();
+
+            // 2. Tính KPIs
+            response.TotalSuppliers = await _context.Suppliers.CountAsync(); // Tổng số NCC trong hệ thống
+            response.TotalImportOrders = await importsInPeriod.CountAsync(); // Tổng số đơn nhập trong kỳ
+
+            // Tải dữ liệu về RAM để GroupBy (vì GroupBy trong EF Core đôi khi phức tạp với logic custom)
+            // Lưu ý: Nếu dữ liệu quá lớn (hàng triệu dòng), nên GroupBy ngay trong SQL (Database evaluation)
+            var importList = await importsInPeriod.ToListAsync();
+
+            response.ActiveSuppliers = importList.Select(i => i.SupplierId).Distinct().Count(); // Số NCC có giao dịch
+            response.TotalImportCost = importList.Sum(i => i.TotalValue); // Tổng chi phí nhập hàng
+
+            // 3. Tính Top Nhà cung cấp chi tiêu nhiều nhất
+            var topStats = importList
+                .GroupBy(i => i.SupplierId)
+                .Select(g => new
+                {
+                    SupplierId = g.Key,
+                    OrderCount = g.Count(),
+                    TotalValue = g.Sum(x => x.TotalValue)
+                })
+                .OrderByDescending(x => x.TotalValue)
+                .Take(10) // Lấy Top 10
+                .ToList();
+
+            // Lấy thông tin chi tiết (Tên, SĐT) của các NCC trong Top
+            var topSupplierIds = topStats.Select(x => x.SupplierId).ToList();
+            var supplierInfos = await _context.Suppliers
+                .Where(s => topSupplierIds.Contains(s.Id))
+                .ToDictionaryAsync(s => s.Id, s => s);
+
+            // Map sang DTO
+            foreach (var stat in topStats)
+            {
+                if (stat.SupplierId.HasValue && supplierInfos.TryGetValue(stat.SupplierId.Value, out var sup))
+                {
+                    response.TopSuppliers.Add(new TopSupplierDto
+                    {
+                        Name = sup.Name,
+                        Phone = sup.PhoneNumber ?? "--",
+                        OrderCount = stat.OrderCount,
+                        TotalImportValue = stat.TotalValue
+                    });
+                }
+            }
+
+            return Ok(response);
+        }
     }
 }

@@ -38,10 +38,10 @@
             text-align: center;
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+            .header h1 {
+                font-size: 2.5em;
+                margin-bottom: 10px;
+            }
 
         .auth-section {
             background: #f8f9fa;
@@ -61,26 +61,26 @@
             min-width: 200px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #495057;
-        }
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                color: #495057;
+            }
 
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ced4da;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                font-size: 14px;
+                transition: border-color 0.3s;
+            }
 
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
+                .form-group input:focus {
+                    outline: none;
+                    border-color: #667eea;
+                }
 
         .btn {
             padding: 10px 24px;
@@ -97,29 +97,29 @@
             color: white;
         }
 
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
+            .btn-primary:hover {
+                background: #5568d3;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            }
 
         .btn-danger {
             background: #dc3545;
             color: white;
         }
 
-        .btn-danger:hover {
-            background: #c82333;
-        }
+            .btn-danger:hover {
+                background: #c82333;
+            }
 
         .btn-success {
             background: #28a745;
             color: white;
         }
 
-        .btn-success:hover {
-            background: #218838;
-        }
+            .btn-success:hover {
+                background: #218838;
+            }
 
         .token-info {
             margin-top: 15px;
@@ -135,7 +135,8 @@
         .main-content {
             display: grid;
             grid-template-columns: 300px 1fr;
-            min-height: calc(100vh - 250px);
+            height: calc(100vh - 200px);
+            overflow: hidden;
         }
 
         .sidebar {
@@ -143,19 +144,37 @@
             padding: 20px;
             border-right: 2px solid #e9ecef;
             overflow-y: auto;
+            height: 100%;
         }
+
+            .sidebar::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .sidebar::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            .sidebar::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+
+                .sidebar::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
 
         .endpoint-group {
             margin-bottom: 25px;
         }
 
-        .endpoint-group h3 {
-            color: #495057;
-            margin-bottom: 12px;
-            font-size: 16px;
-            border-bottom: 2px solid #dee2e6;
-            padding-bottom: 8px;
-        }
+            .endpoint-group h3 {
+                color: #495057;
+                margin-bottom: 12px;
+                font-size: 16px;
+                border-bottom: 2px solid #dee2e6;
+                padding-bottom: 8px;
+            }
 
         .endpoint-item {
             padding: 10px 12px;
@@ -170,16 +189,16 @@
             gap: 10px;
         }
 
-        .endpoint-item:hover {
-            border-color: #667eea;
-            transform: translateX(4px);
-        }
+            .endpoint-item:hover {
+                border-color: #667eea;
+                transform: translateX(4px);
+            }
 
-        .endpoint-item.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
+            .endpoint-item.active {
+                background: #667eea;
+                color: white;
+                border-color: #667eea;
+            }
 
         .method-badge {
             padding: 3px 8px;
@@ -188,25 +207,58 @@
             font-weight: 700;
         }
 
-        .method-get { background: #28a745; color: white; }
-        .method-post { background: #007bff; color: white; }
-        .method-put { background: #ffc107; color: #000; }
-        .method-delete { background: #dc3545; color: white; }
+        .method-get {
+            background: #28a745;
+            color: white;
+        }
+
+        .method-post {
+            background: #007bff;
+            color: white;
+        }
+
+        .method-put {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .method-delete {
+            background: #dc3545;
+            color: white;
+        }
 
         .content-area {
             padding: 30px;
             overflow-y: auto;
+            height: 100%;
         }
+
+            .content-area::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .content-area::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            .content-area::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+
+                .content-area::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
 
         .request-section {
             margin-bottom: 30px;
         }
 
-        .request-section h2 {
-            color: #495057;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
+            .request-section h2 {
+                color: #495057;
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
 
         .request-url {
             display: flex;
@@ -214,27 +266,27 @@
             margin-bottom: 15px;
         }
 
-        .request-url input {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #ced4da;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-        }
+            .request-url input {
+                flex: 1;
+                padding: 12px;
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                font-family: 'Courier New', monospace;
+            }
 
         .request-body {
             margin-top: 15px;
         }
 
-        .request-body textarea {
-            width: 100%;
-            min-height: 200px;
-            padding: 12px;
-            border: 2px solid #ced4da;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-        }
+            .request-body textarea {
+                width: 100%;
+                min-height: 200px;
+                padding: 12px;
+                border: 2px solid #ced4da;
+                border-radius: 6px;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+            }
 
         .response-section {
             background: #f8f9fa;
@@ -243,10 +295,10 @@
             margin-top: 20px;
         }
 
-        .response-section h2 {
-            color: #495057;
-            margin-bottom: 15px;
-        }
+            .response-section h2 {
+                color: #495057;
+                margin-bottom: 15px;
+            }
 
         .response-status {
             display: inline-block;
@@ -256,8 +308,15 @@
             margin-bottom: 15px;
         }
 
-        .status-success { background: #d4edda; color: #155724; }
-        .status-error { background: #f8d7da; color: #721c24; }
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
 
         .response-body {
             background: #ffffff;
@@ -268,13 +327,13 @@
             overflow-y: auto;
         }
 
-        .response-body pre {
-            margin: 0;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+            .response-body pre {
+                margin: 0;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
 
         .params-section {
             margin-top: 15px;
@@ -287,11 +346,11 @@
             margin-bottom: 10px;
         }
 
-        .param-row input {
-            padding: 8px;
-            border: 2px solid #ced4da;
-            border-radius: 4px;
-        }
+            .param-row input {
+                padding: 8px;
+                border: 2px solid #ced4da;
+                border-radius: 4px;
+            }
 
         .loading {
             display: none;
@@ -300,9 +359,9 @@
             color: #667eea;
         }
 
-        .loading.active {
-            display: block;
-        }
+            .loading.active {
+                display: block;
+            }
 
         .quick-actions {
             display: flex;
@@ -323,15 +382,15 @@
             <div class="auth-row">
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" id="username" value="test" placeholder="Enter username">
+                    <input type="text" id="username" value="" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" value="test" placeholder="Enter password">
+                    <input type="password" id="password" value="" placeholder="Enter password">
                 </div>
                 <div class="form-group">
                     <label>Base URL</label>
-                    <input type="text" id="baseUrl" value="http://localhost:5127" placeholder="http://localhost:5127">
+                    <input type="text" id="baseUrl" value="https://kimsakota.xyz" placeholder="http://localhost:5127">
                 </div>
                 <button class="btn btn-primary" onclick="login()">🔐 Login</button>
                 <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>
@@ -346,31 +405,123 @@
             <div class="sidebar">
                 <div class="endpoint-group">
                     <h3>👤 Auth</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/auth/me', null, 'Get Current User')">
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/auth/validate', null)">
+                        <span class="method-badge method-post">POST</span>
+                        <span>Validate Token</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/auth/me', null)">
                         <span class="method-badge method-get">GET</span>
-                        <span>/me</span>
+                        <span>Get Current User</span>
                     </div>
                 </div>
 
                 <div class="endpoint-group">
                     <h3>📦 Products</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products', null, 'Get All Products')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products', null)">
                         <span class="method-badge method-get">GET</span>
                         <span>Get All</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products/{id}', null, 'Get Product By ID')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products/1', null)">
                         <span class="method-badge method-get">GET</span>
                         <span>Get By ID</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/products', productBody, 'Create Product')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products/1/LastImportPrice', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Last Import Price</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/products/CheckExists?code=SP001', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Check Exists</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/products', productBody)">
                         <span class="method-badge method-post">POST</span>
                         <span>Create</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/products/{id}', productBody, 'Update Product')">
+                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/products/1', productUpdateBody)">
                         <span class="method-badge method-put">PUT</span>
                         <span>Update</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/products/{id}', null, 'Delete Product')">
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/products/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>🏷️ Categories</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/categories', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get All</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/categories/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/categories/CheckExists?name=Electronics', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Check Exists</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/categories/1', categoryBody)">
+                        <span class="method-badge method-put">PUT</span>
+                        <span>Update</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/categories/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>🏭 Suppliers</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/suppliers', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get All</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/suppliers/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/suppliers', supplierBody)">
+                        <span class="method-badge method-post">POST</span>
+                        <span>Create</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/suppliers/1', supplierBody)">
+                        <span class="method-badge method-put">PUT</span>
+                        <span>Update</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/suppliers/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>👥 Customers</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/customers', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get All</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/customers/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/customers/Count', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get Count</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/customers/WithTransaction?from=2024-01-01&to=2024-12-31', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>With Transaction</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/customers', customerBody)">
+                        <span class="method-badge method-post">POST</span>
+                        <span>Create</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/customers/1', customerBody)">
+                        <span class="method-badge method-put">PUT</span>
+                        <span>Update</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/customers/1', null)">
                         <span class="method-badge method-delete">DELETE</span>
                         <span>Delete</span>
                     </div>
@@ -378,49 +529,149 @@
 
                 <div class="endpoint-group">
                     <h3>📥 Imports</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/imports', null, 'Get All Imports')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/imports', null)">
                         <span class="method-badge method-get">GET</span>
                         <span>Get All</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/imports', importBody, 'Create Import')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/imports/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/imports/LastTransaction/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Last Transaction</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/imports', importBody)">
                         <span class="method-badge method-post">POST</span>
                         <span>Create</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/imports/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
                     </div>
                 </div>
 
                 <div class="endpoint-group">
                     <h3>📤 Exports</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/exports', null, 'Get All Exports')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/exports', null)">
                         <span class="method-badge method-get">GET</span>
                         <span>Get All</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/exports', exportBody, 'Create Export')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/exports/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/exports', exportBody)">
                         <span class="method-badge method-post">POST</span>
                         <span>Create</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/exports/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
                     </div>
                 </div>
 
                 <div class="endpoint-group">
-                    <h3>👥 Customers</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/customers', null, 'Get All Customers')">
+                    <h3>🔍 Inventory Checks</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/inventorychecks', null)">
                         <span class="method-badge method-get">GET</span>
                         <span>Get All</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/customers', customerBody, 'Create Customer')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/inventorychecks/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/inventorychecks', inventoryCheckBody)">
                         <span class="method-badge method-post">POST</span>
-                        <span>Create</span>
+                        <span>Create Check</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/inventorychecks/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>📜 History</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/history', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get All</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/history?fromDate=2024-01-01&toDate=2024-12-31&type=0', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Filter By Date</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/history?type=1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Import Only</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/history?type=2', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Export Only</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/history/Details?id=1&type=Nhập kho', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get Details</span>
                     </div>
                 </div>
 
                 <div class="endpoint-group">
                     <h3>📊 Reports</h3>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/reports/inventory', null, 'Inventory Report')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/reports/inventory', null)">
                         <span class="method-badge method-get">GET</span>
-                        <span>Inventory</span>
+                        <span>Inventory Report</span>
                     </div>
-                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/reports/financial?from=2024-01-01&to=2024-12-31', null, 'Financial Report')">
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/reports/customers?from=2024-01-01&to=2024-12-31', null)">
                         <span class="method-badge method-get">GET</span>
-                        <span>Financial</span>
+                        <span>Customer Report</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/reports/financial?from=2024-01-01&to=2024-12-31', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Financial Report</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>👤 Users</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/users', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get All</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/users/1', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get By ID</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/users/Employees', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Get Employees</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/users/CheckExists/testuser', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Check Exists</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('POST', '/api/users', userBody)">
+                        <span class="method-badge method-post">POST</span>
+                        <span>Create</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('PUT', '/api/users/1', userBody)">
+                        <span class="method-badge method-put">PUT</span>
+                        <span>Update</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('DELETE', '/api/users/1', null)">
+                        <span class="method-badge method-delete">DELETE</span>
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="endpoint-group">
+                    <h3>🧪 Test</h3>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/test/ping', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>Ping</span>
+                    </div>
+                    <div class="endpoint-item" onclick="selectEndpoint('GET', '/api/dbtest/check', null)">
+                        <span class="method-badge method-get">GET</span>
+                        <span>DB Connection</span>
                     </div>
                 </div>
             </div>
@@ -475,7 +726,45 @@
             "productName": "Sản phẩm test",
             "initialQty": 100,
             "salePrice": 50000,
+            "categoryId": 1,
+            "description": "Mô tả sản phẩm test",
+            "expiryDate": "2025-12-31"
+        };
+
+        const productUpdateBody = {
+            "id": 1,
+            "productCode": "SP001",
+            "productName": "Sản phẩm đã cập nhật",
+            "initialQty": 150,
+            "salePrice": 55000,
             "categoryId": 1
+        };
+
+        const categoryBody = {
+            "id": 1,
+            "name": "Điện tử"
+        };
+
+        const supplierBody = {
+            "id": 1,
+            "name": "Nhà cung cấp ABC",
+            "contactPerson": "Nguyễn Văn A",
+            "phoneNumber": "0912345678",
+            "email": "supplier@example.com",
+            "address": "123 Street, City",
+            "taxCode": "0123456789",
+            "bankName": "Vietcombank",
+            "accountName": "Công ty ABC",
+            "accountNumber": "0123456789012",
+            "notes": "Ghi chú về nhà cung cấp"
+        };
+
+        const customerBody = {
+            "id": 1,
+            "name": "Khách hàng test",
+            "phoneNumber": "0123456789",
+            "address": "123 Test Street",
+            "notes": "Khách hàng VIP"
         };
 
         const importBody = {
@@ -493,6 +782,9 @@
 
         const exportBody = {
             "customerId": 1,
+            "newCustomerName": "",
+            "newCustomerPhone": "",
+            "newCustomerAddress": "",
             "details": [
                 {
                     "productId": 1,
@@ -502,10 +794,26 @@
             ]
         };
 
-        const customerBody = {
-            "name": "Khách hàng test",
-            "phoneNumber": "0123456789",
-            "address": "123 Test Street"
+        const inventoryCheckBody = {
+            "checkDate": new Date().toISOString(),
+            "notes": "Kiểm kê định kỳ",
+            "details": [
+                {
+                    "productId": 1,
+                    "systemQty": 100,
+                    "actualQty": 95
+                }
+            ]
+        };
+
+        const userBody = {
+            "id": 1,
+            "username": "newuser",
+            "passwordHash": "password123",
+            "fullName": "Nguyễn Văn B",
+            "phoneNumber": "0987654321",
+            "email": "user@example.com",
+            "role": "Employee"
         };
 
         if (token) {
@@ -553,7 +861,7 @@
             alert('Đã logout');
         }
 
-        function selectEndpoint(method, endpoint, body, title) {
+        function selectEndpoint(method, endpoint, body) {
             document.querySelectorAll('.endpoint-item').forEach(el => el.classList.remove('active'));
             event.target.closest('.endpoint-item').classList.add('active');
 
