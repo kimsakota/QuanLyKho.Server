@@ -99,9 +99,28 @@ namespace QuanLyKho.Server.Controllers
             var product = await _context.Products.FindAsync(id);
             if (product == null) return NotFound();
 
-            // Kiểm tra ràng buộc khóa ngoại (nếu sản phẩm đã có trong phiếu nhập/xuất thì không cho xóa)
-            // var hasHistory = await _context.ImportDetails.AnyAsync(x => x.ProductId == id) || ...
+            // 1. Kiểm tra xem sản phẩm có trong lịch sử nhập hàng không
+            var hasImport = await _context.ImportDetails.AnyAsync(x => x.ProductId == id);
+            if (hasImport)
+            {
+                return BadRequest(new { message = "Không thể xóa sản phẩm này vì đã tồn tại trong lịch sử nhập hàng." });
+            }
 
+            // 2. Kiểm tra xem sản phẩm có trong lịch sử xuất hàng không
+            var hasExport = await _context.ExportDetails.AnyAsync(x => x.ProductId == id);
+            if (hasExport)
+            {
+                return BadRequest(new { message = "Không thể xóa sản phẩm này vì đã tồn tại trong lịch sử xuất hàng." });
+            }
+
+            // 3. Kiểm tra xem sản phẩm có trong phiếu kiểm kê không (Nên kiểm tra thêm cái này để đảm bảo toàn vẹn)
+            var hasInventoryCheck = await _context.InventoryCheckDetails.AnyAsync(x => x.ProductId == id);
+            if (hasInventoryCheck)
+            {
+                return BadRequest(new { message = "Không thể xóa sản phẩm này vì đã tồn tại trong phiếu kiểm kê." });
+            }
+
+            // Nếu không có ràng buộc nào, tiến hành xóa
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
