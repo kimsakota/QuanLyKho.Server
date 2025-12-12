@@ -72,6 +72,7 @@ namespace QuanLyKho.Server.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+#pragma warning disable CS8604 // Possible null reference argument.
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
@@ -79,6 +80,7 @@ namespace QuanLyKho.Server.Services
                 new Claim(ClaimTypes.Role, user.Role ?? "Staff"),
                 new Claim("FullName", user.FullName ?? string.Empty)
             };
+#pragma warning restore CS8604 // Possible null reference argument.
 
             var token = new JwtSecurityToken(
                 issuer: _config["Jwt:Issuer"],

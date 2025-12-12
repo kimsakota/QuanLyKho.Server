@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using QuanLyKho.Server.Hubs;
 using QuanLyKho.Server.Models;
 using QuanLyKho.Server.Services;
 using System.Reflection;
@@ -35,12 +36,30 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ClockSkew = TimeSpan.Zero
         };
+
+        // THÊM: Cấu hình để lấy Token từ Query String (cho SignalIR)
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+
+                // Nếu request là cho Hub (ví dụ đường dẫn bắt đầu bằng /hubs)
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddAuthorization();
 
 // ===== ĐĂNG K? SERVICES =====
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSingleton<ConnectionManager>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -49,15 +68,20 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddControllers()
     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+// THAY ĐỔI: Cấu hình CORS cho SignalIR (AllowAnyOrigin không hoạt động với AllowCredentials)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.SetIsOriginAllowed(origin => true) // Cho phép mọi nguồn (thay cho AllowAnyOrigin)
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials(); // Bắt buộc phải có để SignalIR client kết nối
     });
 });
+
+// THÊM: Đăng ký dịch vụ SignalIR
+builder.Services.AddSignalR();
 
 
 
@@ -145,5 +169,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllers();
+
+app.MapHub<NotificationHub>("/hubs/notification");
 
 app.Run();
