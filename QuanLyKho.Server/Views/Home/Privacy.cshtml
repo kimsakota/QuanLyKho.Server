@@ -138,7 +138,7 @@
             </button>
 
             <span id="slide-counter" class="font-mono text-xl font-bold text-yellow-500 min-w-[70px] text-center">
-                1 / 26
+                1 / 27
             </span>
 
             <button onclick="nextSlide()" class="hover:text-yellow-400 transition-colors p-2 text-2xl" title="Slide sau (Mũi tên phải)">
@@ -190,7 +190,17 @@
                 content: {
                     title: 'Đường lối hai chiến lược cách mạng',
                     subtitle: 'Giai đoạn 1954 - 1975',
-                    footer: 'Lịch sử Đảng Cộng sản Việt Nam'
+                    footer: 'Lịch sử Đảng Cộng sản Việt Nam',
+                    group: {
+                        name: 'Nhóm 8',
+                        classCode: 'Mã lớp: 164670',
+                        members: [
+                            "Nguyễn Kim Linh - 20233495",
+                            "Hoàng Diệu Linh - 20232970",
+                            "Trần Đặng Khánh Linh - 20231332",
+                            "Trịnh Thị Thùy Linh - 20230960"
+                        ]
+                    }
                 }
             },
             // Slide 2: Menu
@@ -254,7 +264,7 @@
                     title: 'Chia cắt tại vĩ tuyến 17',
                     description: 'Sông Bến Hải - Cầu Hiền Lương: Ranh giới chia cắt tạm thời hai miền Nam - Bắc.',
                     icon: 'map-pin',
-                    imageUrl: '/images/lichsudang/vituyen17.jpg'   // <-- thêm dòng này
+                    imageUrl: '/images/lichsudang/vituyen17.jpg'
                 }
             },
 
@@ -355,7 +365,7 @@
                     title: 'Hậu phương & Tiền tuyến',
                     description: 'Miền Bắc "Thóc không thiếu một cân, quân không thiếu một người" chi viện cho miền Nam ruột thịt.',
                     icon: 'users',
-                    imageUrl: '/images/lichsudang/hauphuong-tientuyen.jpg' // <-- thêm dòng này
+                    imageUrl: '/images/lichsudang/hauphuong-tientuyen.jpg'
                 }
             },
 
@@ -411,6 +421,7 @@
                     ]
                 }
             },
+
             // Slide 23: Conclusion
             {
                 type: 'conclusion',
@@ -423,6 +434,7 @@
                     ]
                 }
             },
+
             // Slide 24: Quiz 1
             {
                 type: 'quiz',
@@ -458,6 +470,15 @@
                         answer: 'B'
                     }]
                 }
+            },
+            // Slide 27: Thank You (MỚI)
+            {
+                type: 'thankyou',
+                content: {
+                    title: 'Cảm ơn',
+                    subtitle: 'Thầy cô và các bạn đã chú ý lắng nghe!',
+                    footer: 'Nhóm 8 - Lớp 164670'
+                }
             }
         ];
 
@@ -473,21 +494,42 @@
             switch (slide.type) {
                 case 'title':
                     return `
-                    <div class="${commonContainer} text-center py-6">
-                        <div class="mb-8 relative">
+                    <div class="${commonContainer} text-center py-6 h-full flex flex-col justify-center">
+                        <div class="mb-6 relative">
                             <div class="absolute inset-0 bg-yellow-400 blur-[60px] opacity-20 rounded-full"></div>
-                            ${iconHtml('star', 'relative text-9xl md:text-[9rem] text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] animate-pulse')}
+                            ${iconHtml('star', 'relative text-8xl md:text-[8rem] text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] animate-pulse')}
                         </div>
-                        <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white mb-6 leading-tight drop-shadow-2xl">
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 leading-tight drop-shadow-2xl">
                             ${c.title}
                         </h1>
-                        <div class="w-40 h-2 bg-yellow-500 mx-auto rounded-full mb-8 shadow-[0_0_10px_rgba(234,179,8,0.8)]"></div>
-                        <p class="text-4xl md:text-6xl text-yellow-300 font-medium mb-10">
+                        <div class="w-32 h-1.5 bg-yellow-500 mx-auto rounded-full mb-6 shadow-[0_0_10px_rgba(234,179,8,0.8)]"></div>
+                        <p class="text-3xl md:text-5xl text-yellow-300 font-medium mb-8">
                             ${c.subtitle}
                         </p>
-                        <div class="inline-block bg-slate-900/50 backdrop-blur px-8 py-3 rounded-lg border border-slate-700 text-slate-300 text-2xl font-semibold">
+                        <div class="inline-block bg-slate-900/50 backdrop-blur px-6 py-2 rounded-lg border border-slate-700 text-slate-300 text-xl font-semibold mb-8">
                             ${c.footer}
                         </div>
+
+                        <!-- MEMBER INFO SECTION -->
+                        ${c.group ? `
+                        <div class="mt-4 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 w-full max-w-4xl mx-auto shadow-2xl animate-fade-in-up">
+                            <div class="flex justify-center items-center gap-4 mb-4 border-b border-white/10 pb-2">
+                                <span class="text-2xl font-bold text-yellow-400 uppercase tracking-wider">${c.group.name}</span>
+                                <span class="text-slate-500">|</span>
+                                <span class="text-xl text-slate-300 font-mono">${c.group.classCode}</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-left">
+                                ${c.group.members.map(m => `
+                                    <div class="flex items-center text-slate-200 text-lg hover:text-white transition-colors duration-200 group">
+                                        <div class="w-8 h-8 rounded-full bg-blue-900/50 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors">
+                                            <i class="fa-solid fa-user text-xs text-blue-300 group-hover:text-white"></i>
+                                        </div>
+                                        ${m}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
                     </div>`;
 
                 case 'section':
@@ -681,8 +723,8 @@
                 case 'diagram':
                     return `
                     <div class="${commonContainer}">
-                         <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 text-center">${c.title}</h2>
-                         <div class="glass-panel p-8 md:p-12 rounded-3xl w-full flex flex-col items-center justify-center relative h-[65vh]">
+                          <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 text-center">${c.title}</h2>
+                          <div class="glass-panel p-8 md:p-12 rounded-3xl w-full flex flex-col items-center justify-center relative h-[65vh]">
                             <div class="bg-yellow-500 text-blue-900 px-8 py-4 rounded-xl text-3xl md:text-4xl font-bold shadow-lg z-20 mb-10 transform hover:scale-110 transition-transform">
                                 ĐẢNG CỘNG SẢN VIỆT NAM
                             </div>
@@ -707,7 +749,7 @@
                             <div class="mt-10 bg-green-700 text-white px-10 py-4 rounded-2xl text-3xl md:text-4xl font-bold shadow-2xl z-20 border-2 border-green-400">
                                 THỐNG NHẤT TỔ QUỐC (1975)
                             </div>
-                         </div>
+                          </div>
                     </div>`;
 
                 case 'conclusion':
@@ -772,6 +814,25 @@
                                     </div>
                                 </div>
                              `).join('')}
+                        </div>
+                    </div>`;
+
+                // --- NEW CASE: THANK YOU ---
+                case 'thankyou':
+                    return `
+                    <div class="${commonContainer} text-center h-full flex flex-col justify-center">
+                        <div class="mb-12 relative inline-block">
+                             <div class="absolute inset-0 bg-pink-500 blur-[80px] opacity-40 rounded-full"></div>
+                             ${iconHtml('heart', 'relative text-[12rem] text-pink-500 drop-shadow-[0_0_30px_rgba(236,72,153,0.6)] animate-pulse')}
+                        </div>
+                        <h1 class="text-8xl md:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-yellow-400 mb-8 leading-none filter drop-shadow-2xl">
+                            ${c.title}
+                        </h1>
+                        <p class="text-3xl md:text-5xl text-slate-200 font-light mb-12">
+                            ${c.subtitle}
+                        </p>
+                         <div class="inline-block bg-white/5 backdrop-blur-md px-8 py-3 rounded-full border border-white/10 text-slate-300 text-xl font-mono">
+                            ${c.footer}
                         </div>
                     </div>`;
 
